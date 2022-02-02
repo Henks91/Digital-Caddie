@@ -6,8 +6,8 @@ namespace Digital_Caddie
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Hej Henric");
+            Console.WriteLine("Hejsan allihopa");
+
         }
     }
 }
