@@ -2,10 +2,14 @@
 
 namespace Digital_Caddie
 {
-    class Program
+
+    class Program : ClassKlubba
     {
+
+
         static void Main(string[] args)
         {
+             
             while (true)
             {
                 Console.WriteLine("Välkommen till Huvudmenyn, väl ett av nedan alternativ! \n Kom ihåg att skapa din bag innan du kan börja spela:)");
@@ -63,6 +67,9 @@ namespace Digital_Caddie
                 else if (användarInput == "3")
                 {
                     Console.WriteLine("Mina bags");
+                    Test();
+
+
                     //metod/funktion
                 }
                 else if (användarInput == "4")
@@ -84,6 +91,5 @@ namespace Digital_Caddie
 
         }
 
-    }
     }
 }
