@@ -38,7 +38,7 @@ namespace Digital_Caddie
                 //Console.WriteLine($"{info.längd} {info.typAvKlubba}");
             }
                 
-                for (int k = 0; k < antal; k++)
+                for (int k = 0; k <= antal; k++)
                 {
                     Console.WriteLine("Längd: {0}, {1}");
 
