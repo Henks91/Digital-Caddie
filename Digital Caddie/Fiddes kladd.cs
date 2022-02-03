@@ -6,7 +6,7 @@ namespace Digital_Caddie
     {
         static void Testning()
         {
-            Console.WriteLine("Välkommen Fidde");
+            Console.WriteLine("Hej fredrik");
         }
     }
 }
