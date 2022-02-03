@@ -8,8 +8,9 @@ namespace Digital_Caddie
     {
 
 
-        public class Klubba
+        public class Bag
         {
+            public string bagNamn;
             public string typAvKlubba;
             public int längd;
 
@@ -17,15 +18,22 @@ namespace Digital_Caddie
 
         public static void Test()
         {
-            Klubba klubba = new Klubba();
-            Klubba[,] klubblista = new Klubba[2,14];
+            //Bag klubba = new Bag();
+            
+            Bag[] klubblista = new Bag[14];
             int antal = 0;
+            //Console.WriteLine("Namge din Bag: ");
+            //Bag namnbag = new Bag();
+            //klubba.bagNamn = Console.ReadLine();
+             
             Console.WriteLine("Hur många klubbor vill du registrera? ");
             antal = int.Parse(Console.ReadLine());
-            Klubba[] klubbantal = new Klubba[antal];
+            Bag[] klubbantal = new Bag[antal];
             for (int i = 0; i < antal; i++)
             {
-                Klubba info = new Klubba();
+                Bag info = new Bag();
+                
+
                 Console.WriteLine("Vad är det för typ av klubba du vill lägga till, namge den valfritt! ");
                 info.typAvKlubba = Console.ReadLine();
                 Console.WriteLine("Hur långt slår du med denna klubban? ");
@@ -34,18 +42,23 @@ namespace Digital_Caddie
 
                 //någonting som lägger till input i lista              
 
-                klubblista[2,14] = info;
+                klubblista[i] = info;
+                Console.WriteLine(klubblista[i].bagNamn);
                 //Console.WriteLine($"{info.längd} {info.typAvKlubba}");
+            }
 
-
-                for (int ij = 0; i <= antal; i++)
+            
+                for (int i = 0; i < antal; i++)
                 {
-                    klubblista[2,14] = i;
-
-                    Console.WriteLine("Längd: {0}, {1}");
+                    
+                    Console.WriteLine("Namn: " + klubblista[i].typAvKlubba + "\nDistans: "+ klubblista[i].längd,"\n");
 
                 }
-            }
+
+            
+            
         }
+
+        
     }
 }
