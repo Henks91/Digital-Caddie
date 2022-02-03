@@ -7,6 +7,7 @@ namespace Digital_Caddie
         static void TEST()
         {
             Console.WriteLine("WZP");
+            Console.WriteLine("Henks är här");
         }
     }
 }
