@@ -9,7 +9,7 @@ namespace Digital_Caddie
 
         static void Main(string[] args)
         {
-
+             
             while (true)
             {
                 Console.WriteLine("Välkommen till Huvudmenyn, väl ett av nedan alternativ! \n Kom ihåg att skapa din bag innan du kan börja spela:)");

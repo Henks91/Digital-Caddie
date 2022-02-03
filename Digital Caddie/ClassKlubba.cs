@@ -18,7 +18,7 @@ namespace Digital_Caddie
         public static void Test()
         {
             Klubba klubba = new Klubba();
-            Klubba[] klubblista = new Klubba[14];
+            Klubba[,] klubblista = new Klubba[2,14];
             int antal = 0;
             Console.WriteLine("Hur många klubbor vill du registrera? ");
             antal = int.Parse(Console.ReadLine());
@@ -34,16 +34,18 @@ namespace Digital_Caddie
 
                 //någonting som lägger till input i lista              
 
-                klubblista[i] = info;
+                klubblista[2,14] = info;
                 //Console.WriteLine($"{info.längd} {info.typAvKlubba}");
-            }
-                
-                for (int k = 0; k <= antal; k++)
+
+
+                for (int i = 0; i <= antal; i++)
                 {
+                    klubblista[2,14] = i;
+
                     Console.WriteLine("Längd: {0}, {1}");
 
                 }
-            
+            }
         }
     }
 }
