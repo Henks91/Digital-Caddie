@@ -13,7 +13,7 @@ namespace Digital_Caddie
        
         public static void Test()
         {
-            //Bag klubba = new Bag();
+            //ClassKlubba klubba = new ClassKlubba();
             
             ClassKlubba[] klubblista = new ClassKlubba[14];
             int antal = 0;
@@ -23,7 +23,7 @@ namespace Digital_Caddie
              
             Console.WriteLine("Hur många klubbor vill du registrera? ");
             antal = int.Parse(Console.ReadLine());
-            ClassKlubba[] klubbantal = new ClassKlubba[antal];
+            //ClassKlubba[] klubbantal = new ClassKlubba[antal];
             for (int i = 0; i < antal; i++)
             {
                 ClassKlubba info = new ClassKlubba();
@@ -38,7 +38,7 @@ namespace Digital_Caddie
                 //någonting som lägger till input i lista              
 
                 klubblista[i] = info;
-                Console.WriteLine(klubblista[i].bagNamn);
+                //Console.WriteLine(klubblista[i].bagNamn);
                 //Console.WriteLine($"{info.längd} {info.typAvKlubba}");
             }
 
