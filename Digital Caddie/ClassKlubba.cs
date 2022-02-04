@@ -8,9 +8,9 @@ namespace Digital_Caddie
     {
 
 
-        public class Bag
+        public class KlubbInfo
         {
-            public string bagNamn;
+            
             public string typAvKlubba;
             public int längd;
 
@@ -20,7 +20,7 @@ namespace Digital_Caddie
         {
             //Bag klubba = new Bag();
             
-            Bag[] klubblista = new Bag[14];
+            KlubbInfo[] klubblista = new KlubbInfo[14];
             int antal = 0;
             //Console.WriteLine("Namge din Bag: ");
             //Bag namnbag = new Bag();
@@ -28,10 +28,10 @@ namespace Digital_Caddie
              
             Console.WriteLine("Hur många klubbor vill du registrera? ");
             antal = int.Parse(Console.ReadLine());
-            Bag[] klubbantal = new Bag[antal];
+            KlubbInfo[] klubbantal = new KlubbInfo[antal];
             for (int i = 0; i < antal; i++)
             {
-                Bag info = new Bag();
+                KlubbInfo info = new KlubbInfo();
                 
 
                 Console.WriteLine("Vad är det för typ av klubba du vill lägga till, namge den valfritt! ");
