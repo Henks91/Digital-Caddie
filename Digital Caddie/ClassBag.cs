@@ -6,7 +6,8 @@ namespace Digital_Caddie
 {
     public class ClassBag
     {
-        
+        public string namnBag;
+        public ClassKlubba classKlubba;
 
     }
     
