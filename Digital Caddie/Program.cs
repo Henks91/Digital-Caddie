@@ -3,7 +3,7 @@
 namespace Digital_Caddie
 {
 
-    class Program : ClassKlubba
+    class Program : ClassKlubba : ClassBag : 
     {
 
 
@@ -23,6 +23,8 @@ namespace Digital_Caddie
                 if (användarInput == "1")
                 {
                     Console.WriteLine("Dags att spela golf! \n Välj din bag för att komma igång.");
+                    TestT();
+                    
                     //kalla på funktion/metod
                 }
                 else if (användarInput == "2")

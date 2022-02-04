@@ -6,21 +6,16 @@ namespace Digital_Caddie
 {
     class ClassKlubba
     {
-
-
-        public class KlubbInfo
-        {
-            
-            public string typAvKlubba;
-            public int längd;
-
-        }
-
+    
+        public string typAvKlubba;
+        public int längd;
+        
+       
         public static void Test()
         {
             //Bag klubba = new Bag();
             
-            KlubbInfo[] klubblista = new KlubbInfo[14];
+            ClassKlubba[] klubblista = new ClassKlubba[14];
             int antal = 0;
             //Console.WriteLine("Namge din Bag: ");
             //Bag namnbag = new Bag();
@@ -28,10 +23,10 @@ namespace Digital_Caddie
              
             Console.WriteLine("Hur många klubbor vill du registrera? ");
             antal = int.Parse(Console.ReadLine());
-            KlubbInfo[] klubbantal = new KlubbInfo[antal];
+            ClassKlubba[] klubbantal = new ClassKlubba[antal];
             for (int i = 0; i < antal; i++)
             {
-                KlubbInfo info = new KlubbInfo();
+                ClassKlubba info = new ClassKlubba();
                 
 
                 Console.WriteLine("Vad är det för typ av klubba du vill lägga till, namge den valfritt! ");
@@ -43,7 +38,7 @@ namespace Digital_Caddie
                 //någonting som lägger till input i lista              
 
                 klubblista[i] = info;
-                
+                Console.WriteLine(klubblista[i].bagNamn);
                 //Console.WriteLine($"{info.längd} {info.typAvKlubba}");
             }
 
