@@ -46,7 +46,7 @@ namespace Digital_Caddie
                 for (int i = 0; i < antal; i++)
                 {
                     
-                    Console.WriteLine("Namn: " + klubblista[i].typAvKlubba + "\nDistans: "+ klubblista[i].längd,"\n");
+                Console.WriteLine("Namn: " + klubblista[i].typAvKlubba + "\nDistans: "+ klubblista[i].längd,"\n");
 
                 }
 
