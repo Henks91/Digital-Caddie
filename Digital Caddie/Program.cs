@@ -12,7 +12,7 @@ namespace Digital_Caddie
              
             while (true)
             {
-                Console.WriteLine("Välkommen till Huvudmenyn, väl ett av nedan alternativ! \n Kom ihåg att skapa din bag innan du kan börja spela:)");
+                Console.WriteLine("Välkommen till Huvudmenyn, väl ett av nedan alternativ! \n Kom ihåg att skapa din bag innan du kan börja spela:)\n");
                 Console.WriteLine("1. Spela Golf");
                 Console.WriteLine("2. Skapa ny bag");
                 Console.WriteLine("3. Mina bags");
