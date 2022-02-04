@@ -43,7 +43,7 @@ namespace Digital_Caddie
                 //någonting som lägger till input i lista              
 
                 klubblista[i] = info;
-                Console.WriteLine(klubblista[i].bagNamn);
+                //Console.WriteLine(klubblista[i].bagNamn);
                 //Console.WriteLine($"{info.längd} {info.typAvKlubba}");
             }
 
