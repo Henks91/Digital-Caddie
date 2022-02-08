@@ -19,7 +19,7 @@ namespace Digital_Caddie
                 Console.WriteLine("3. Mina bags");
                 Console.WriteLine("4. Avsluta programmet");
 
-                string användarInput = Console.ReadLine();
+                string användarInput = Console.ReadLine(); // in kontrollstrukturen från F3B - om användare mata in info annat än valen vi är ute efter
 
                 if (användarInput == "1")
                 {

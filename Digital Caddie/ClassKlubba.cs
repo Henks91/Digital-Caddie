@@ -30,9 +30,9 @@ namespace Digital_Caddie
                 
 
                 Console.WriteLine("Vad är det för typ av klubba du vill lägga till, namge den valfritt! ");
-                info.typAvKlubba = Console.ReadLine();
+                info.typAvKlubba = Console.ReadLine(); //lägg in kontrollstrukturen från F3B - om användare mata in info annat än valen vi är ute efter
                 Console.WriteLine("Hur långt slår du med denna klubban? ");
-                info.längd = int.Parse(Console.ReadLine());
+                info.längd = int.Parse(Console.ReadLine()); //lägg in kontrollstrukturen från F3B - om användare mata in info annat än valen vi är ute efter
 
 
                 //någonting som lägger till input i lista              
