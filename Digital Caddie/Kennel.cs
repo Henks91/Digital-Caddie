@@ -10,7 +10,7 @@ namespace Digital_Caddie
         public string adress; //enkel losning, skulle kunna delas upp i fler variabler: gatuadress, postnummer osv
         public string agare;
 
-        public string[] hundar;
-        //public Hund[] hundar; //men har vill antagligen att en hund ska kunna ha fler egna attribut, se klassen Hund
+        //public string[] hundar;
+        public Hund[] hundar; //men har vill antagligen att en hund ska kunna ha fler egna attribut, se klassen Hund
     }
 }

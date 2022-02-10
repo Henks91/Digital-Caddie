@@ -7,7 +7,7 @@ namespace Digital_Caddie
     class Bag
     {
         public string namnBag;
-        public Klubblist[] klubblist;
+        public Klubba[] klubblist;
 
     }
 }

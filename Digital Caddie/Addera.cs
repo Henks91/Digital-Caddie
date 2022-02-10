@@ -35,11 +35,11 @@ namespace Digital_Caddie
         public static void RegistreraTest()
         {
             Kennel a = new Kennel(); //skapa ett kennelobjekt, i temporara variabeln "a"
-            Hund A = new Hund();
+            
             a.namn = "Ringgirdens taxar";
             a.adress = "Kriksvangen 4";
             a.agare = "Hanna Persson";
-            a.hundar = new string[3]; //skapa kennelns hundlista (godtycklig langd 2 tillsvidare)
+            a.hundar = new Hund[1]; //skapa kennelns hundlista (godtycklig langd 2 tillsvidare)
             a.hundar[0] = "Maja";
             a.hundar[1] = "Brutus";
             a.hundar[2] = "Pudel";

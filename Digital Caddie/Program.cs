@@ -5,7 +5,7 @@ namespace Digital_Caddie
 
     class Program: Addera
     {
-        public static Bag[] BagRegister = new Bag[5];
+        public static Bag[] BagRegister = new Bag[0];
         
 
         static void Main(string[] args)

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Digital_Caddie
 {
-    class Klubblist
+    class Klubba
     {
         public string namnKlubba;
         public int minLenght;
