@@ -3,7 +3,7 @@
 namespace Digital_Caddie
 {
 
-    class Program : ClassKlubba 
+    class Program : Klubba 
 
     {
 
@@ -24,54 +24,19 @@ namespace Digital_Caddie
                 if (användarInput == "1")
                 {
                     Console.WriteLine("Dags att spela golf! \n Välj din bag för att komma igång.");
-                    
-                    ClassBag.TestT();
 
-                    //kalla på funktion/metod
+                    
                 }
                 else if (användarInput == "2")
                 {
                     Console.WriteLine("Dags att skapa ny bag, kör hårt!");
 
-                    //static void Nybag()
-                    {
-                        //int distans;
-                        //int antal;
-                        //string[] Klubblista = new string [antal];
-                        //int[] Längd = new int [antal];
-
-                        //string typAvKlubba;
-
-                        Console.WriteLine("Hur många klubbor vill du registrera? ");
-                        int antal = int.Parse(Console.ReadLine());
-                        string[] Klubblista = new string[antal];
-                        int[] Längd = new int[antal];
-                        for (int i = 0; i < antal; i++)
-                        {
-
-                            Console.WriteLine("Vad vill du namnge denna klubban? ");
-                            Klubblista[i] = Console.ReadLine();
-
-                            Console.WriteLine("Hur långt slår du med denna klubban? ");
-                            Längd[i] = int.Parse(Console.ReadLine());
-
-                        }
-                        foreach (var iteam in Klubblista)
-                        {
-                            Console.WriteLine("Listan innehåller nu:", iteam);
-                        }
-                        foreach (var iteam in Längd)
-                        {
-                            Console.WriteLine("Listan innehåller nu:", iteam);
-                        }
-                    }
-
-
+                    SkapaNyBag.RegistreraNyBag();
                 }
                 else if (användarInput == "3")
                 {
                     Console.WriteLine("Mina bags");
-                    Test();
+                    
 
 
                     //metod/funktion

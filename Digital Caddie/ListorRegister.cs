@@ -2,7 +2,7 @@
 
 namespace Digital_Caddie
 {
-    class Henkes_kladd
+    class ListorRegister
     {
         static void TEST()
         {
@@ -10,3 +10,4 @@ namespace Digital_Caddie
         }
     }
 }
+
