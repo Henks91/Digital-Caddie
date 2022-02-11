@@ -15,24 +15,24 @@ namespace Digital_Caddie
             SkrivUtRegister();
     Console.WriteLine("\n\nProgrammet avslutas");
     }
-    static void LäggTillKennel() //låt anvädaren mata in infon för skapa en kennel
-    {
-    Kennel ny = new Kennel(); //Skapa ett kennelobjekt, i temporär variabel "ny"
-    Console.WriteLine("Ny kennels namn:");
-    ny.namn = Console.ReadLine();
-    Console.WriteLine("Ny kennels adress:");
-    ny.adress = Console.ReadLine();
-    Console.WriteLine("Ny kennels ägare:");
-    ny.agare = Console.ReadLine();
+        static void LäggTillKennel() //låt anvädaren mata in infon för skapa en kennel
+        {
+        Kennel ny = new Kennel(); //Skapa ett kennelobjekt, i temporär variabel "ny"
+        Console.WriteLine("Ny kennels namn:");
+        ny.namn = Console.ReadLine();
+        Console.WriteLine("Ny kennels adress:");
+        ny.adress = Console.ReadLine();
+        Console.WriteLine("Ny kennels ägare:");
+        ny.agare = Console.ReadLine();
 
-    uint antalHundar = ReadUInt("Hur många hundar ska läggas till i kenneln: ");
-    ny.hundar = new string[antalHundar];
-    for (int i = 0; i < antalHundar; i++)
-    {
+        uint antalHundar = ReadUInt("Hur många hundar ska läggas till i kenneln: ");
+        ny.hundar = new string[antalHundar];
+        for (int i = 0; i < antalHundar; i++)
+        {
         Console.WriteLine("#" + (i + 1) + " ny hunds namn:");
         ny.hundar[i] = Console.ReadLine();
-    }
-    kennelRegister = UtökaArray(kennelRegister, ny); //lägg till kenneln sist i kennelnrigistret
+        }
+        kennelRegister = UtökaArray(kennelRegister, ny); //lägg till kenneln sist i kennelnrigistret
     }
 
 //Skriva ut registret i konsollen
@@ -72,4 +72,4 @@ public static uint ReadUInt(string label) //Tar ej negativa tal
     }
     return tal;
 }   
-}
+
