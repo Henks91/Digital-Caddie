@@ -11,7 +11,7 @@ namespace Digital_Caddie
         public string typAvKlubba;
     }
 
-    public static void Nybag()
+    /*public static void Nybag()
     {
         //Klubba klubba = new Klubba();
         //Klubba[] klubblista = new Klubba[14];
@@ -29,4 +29,5 @@ namespace Digital_Caddie
 
             klubblista[i] = info;
         }
+    }*/
 }
