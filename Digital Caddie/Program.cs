@@ -8,7 +8,7 @@ namespace Digital_Caddie
         static void Main(string[] args)
         {
             Huvudmeny();
-            SkrivUtBaglista();
+            SkrivUtBaglista(bagRegister);
 
         }
         static void Huvudmeny()
@@ -56,33 +56,32 @@ namespace Digital_Caddie
         public static void LäggTillBag() //Prompta användaren till att skapa en ny bag med klubbor.
         {
             Bag ny = new Bag();
-            Klubba klubba = new Klubba();
             Console.WriteLine("Döp din bag: ");
             ny.namn = Console.ReadLine();
             uint antalKlubbor = ReadUInt("Hur många klubbor vill du lägga till i bagen?: ");
-            klubba.klubbNamn = new string[antalKlubbor];
-            klubba.maxLängd = new int[antalKlubbor];
-            klubba.minLängd = new int[antalKlubbor];
+            ny.klubbNamn = new string[antalKlubbor];
+            ny.maxLängd = new int[antalKlubbor];
+            ny.minLängd = new int[antalKlubbor];
             for (int i = 0; i < antalKlubbor; i++)
             {
                 Console.WriteLine("#" + (i + 1) + "Namnge ny klubba: \n");
-                klubba.klubbNamn[i] = Console.ReadLine();
+                ny.klubbNamn[i] = Console.ReadLine();
 
                 
                 Console.WriteLine("#" + (i + 1) + "Ange max längd som du slår med klubban: \n"); //Får felmeddelande när attribut för klubbans max och min längd ska lägga in i arrayn
-                klubba.maxLängd[i] = int.Parse(Console.ReadLine());
+                ny.maxLängd[i] = int.Parse(Console.ReadLine());
                 
                 
                 
                 Console.WriteLine("#" + (i + 1) + "Ange minimum längd som du slår med klubban: \n");
-                klubba.minLängd[i] = int.Parse(Console.ReadLine());
+                ny.minLängd[i] = int.Parse(Console.ReadLine());
                 
 
             }
-            bagRegister = UtökaBagRegister(bagRegister, ny, klubba); //Lägger till bag sist i bagregister.
-            SkrivUtBaglista();
+            bagRegister = UtökaBagRegister(bagRegister, ny); //Lägger till bag sist i bagregister.
+            SkrivUtBaglista(bagRegister);
         }
-        public static Bag[] UtökaBagRegister(Bag[] lista, Bag ny, Klubba klubba)
+        public static Bag[] UtökaBagRegister(Bag[] lista, Bag ny)
         {
             Bag[] nyLista = new Bag[lista.Length + 1];
             for (int i = 0; i < lista.Length; i++)
@@ -100,11 +99,10 @@ namespace Digital_Caddie
                 Console.WriteLine("Måste vara ett possitivt tal! ");
                 Console.WriteLine(label);
             }
-            
             return tal;
         }
 
-        public static void SkrivUtBaglista()
+        public static void SkrivUtBaglista(Bag[] bagRegister)
         {
             Console.WriteLine("Utskrift av bagregister: \n");
             for (int i = 0; i < bagRegister.Length; i++) //loopa igenom bagregistret
@@ -117,10 +115,10 @@ namespace Digital_Caddie
                 {
                     Console.WriteLine("Klubba: " + bagRegister[i].klubbNamn + "denna klubbar går mellan " + bagRegister[i].minLängd + "-" + bagRegister[i].maxLängd + " m");
                 }*/
-                /*foreach (string klubba in bagRegister[i].klubbNamn)
+                foreach (string klubba in bagRegister[i].klubbNamn)
                 {
                     Console.WriteLine(klubba );
-                }*/
+                }
             }
         }
     }
