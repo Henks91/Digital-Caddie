@@ -16,7 +16,7 @@ namespace Digital_Caddie
 
             while (true)
             {
-                Console.WriteLine("Välkommen till Huvudmenyn, väl ett av nedan alternativ! \n Kom ihåg att skapa din bag innan du kan börja spela:)");
+                Console.WriteLine("\nVälkommen till Huvudmenyn, väl ett av nedan alternativ! \n Kom ihåg att skapa din bag innan du kan börja spela:)");
                 Console.WriteLine("1. Spela Golf");
                 Console.WriteLine("2. Skapa ny bag");
                 Console.WriteLine("3. Mina bags");
@@ -56,33 +56,32 @@ namespace Digital_Caddie
         public static void LäggTillBag() //Prompta användaren till att skapa en ny bag med klubbor.
         {
             Bag ny = new Bag();
-            Klubba klubba = new Klubba();
+            ny.klubba = new Klubba[14];
+            
             Console.WriteLine("Döp din bag: ");
             ny.namn = Console.ReadLine();
             uint antalKlubbor = ReadUInt("Hur många klubbor vill du lägga till i bagen?: ");
-            klubba.klubbNamn = new string[antalKlubbor];
-            klubba.maxLängd = new int[antalKlubbor];
-            klubba.minLängd = new int[antalKlubbor];
+
             for (int i = 0; i < antalKlubbor; i++)
             {
                 Console.WriteLine("#" + (i + 1) + "Namnge ny klubba: \n");
-                klubba.klubbNamn[i] = Console.ReadLine();
+                ny.klubba[i].klubbNamn = (Console.ReadLine());
 
-                
+
                 Console.WriteLine("#" + (i + 1) + "Ange max längd som du slår med klubban: \n"); //Får felmeddelande när attribut för klubbans max och min längd ska lägga in i arrayn
-                klubba.maxLängd[i] = int.Parse(Console.ReadLine());
-                
-                
-                
+                ny.klubba[i].maxLängd = int.Parse(Console.ReadLine());
+
+
+
                 Console.WriteLine("#" + (i + 1) + "Ange minimum längd som du slår med klubban: \n");
-                klubba.minLängd[i] = int.Parse(Console.ReadLine());
-                
+                ny.klubba[i].minLängd = int.Parse(Console.ReadLine());
+
 
             }
-            bagRegister = UtökaBagRegister(bagRegister, ny, klubba); //Lägger till bag sist i bagregister.
+            bagRegister = UtökaBagRegister(bagRegister, ny); //Lägger till bag sist i bagregister.
             SkrivUtBaglista();
         }
-        public static Bag[] UtökaBagRegister(Bag[] lista, Bag ny, Klubba klubba)
+        public static Bag[] UtökaBagRegister(Bag[] lista, Bag ny)
         {
             Bag[] nyLista = new Bag[lista.Length + 1];
             for (int i = 0; i < lista.Length; i++)
@@ -100,7 +99,7 @@ namespace Digital_Caddie
                 Console.WriteLine("Måste vara ett possitivt tal! ");
                 Console.WriteLine(label);
             }
-            
+
             return tal;
         }
 
@@ -111,20 +110,31 @@ namespace Digital_Caddie
             {
                 Console.WriteLine(bagRegister.Length);
                 Console.WriteLine("\n#" + i + "Bagnamn: " + bagRegister[i].namn);
-                Console.WriteLine("Klubbor i baggen: ");
+                Console.WriteLine("Klubbor i baggen: " + bagRegister[i].klubba);
 
                 /*for (int k = 0; k < bagRegister.Length; k++)
                 {
                     Console.WriteLine("Klubba: " + bagRegister[i].klubbNamn + "denna klubbar går mellan " + bagRegister[i].minLängd + "-" + bagRegister[i].maxLängd + " m");
                 }*/
+                
                 /*foreach (string klubba in bagRegister[i].klubbNamn)
                 {
-                    Console.WriteLine(klubba );
+                    
+                    Console.Write(klubba + "\t\t");
+                }
+                Console.Write("\nmin:");
+                foreach (int minLängd in bagRegister[i].minLängd)
+                {
+                    Console.Write(minLängd + "\t\t");
+                }
+                Console.Write("\nmax:{0,3} ");
+                foreach (int maxLängd in bagRegister[i].maxLängd)
+                {
+                    Console.Write(maxLängd + "\t\t");
                 }*/
             }
         }
-    }
 
-    
+    }
     
 }

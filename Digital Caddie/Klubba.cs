@@ -8,9 +8,9 @@ namespace Digital_Caddie
     {
         
         
-            public string[] klubbNamn;
-            public int[] maxLängd;
-            public int[] minLängd;
+            public string klubbNamn;
+            public int maxLängd;
+            public int minLängd;
         
     }
 }
