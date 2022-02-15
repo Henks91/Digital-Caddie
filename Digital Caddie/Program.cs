@@ -8,7 +8,7 @@ namespace Digital_Caddie
         static void Main(string[] args)
         {
             Huvudmeny();
-            SkrivUtBaglista();
+            SkrivUtBaglista(bagRegister);
 
         }
         static void Huvudmeny()
@@ -103,7 +103,7 @@ namespace Digital_Caddie
             return tal;
         }
 
-        public static void SkrivUtBaglista()
+        public static void SkrivUtBaglista(Bag[] bagRegister)
         {
             Console.WriteLine("Utskrift av bagregister: \n");
             for (int i = 0; i < bagRegister.Length; i++) //loopa igenom bagregistret
