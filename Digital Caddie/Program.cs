@@ -1,14 +1,17 @@
 ﻿using System;
-
+using System.IO;
 
 namespace Digital_Caddie
 {
     class Program
     {
+        static Bag[] bagRegister = new Bag[0];
+
         static void Main(string[] args)
         {
             Huvudmeny();
-            SkrivUtBaglista(bagRegister);
+            SkrivUtBaglista();
+
 
         }
         static void Huvudmeny()
@@ -27,51 +30,19 @@ namespace Digital_Caddie
                 if (användarInput == "1")
                 {
                     Console.WriteLine("Dags att spela golf! \n Välj din bag för att komma igång.");
-                    //kalla på funktion/metod
+
                 }
                 else if (användarInput == "2")
                 {
                     Console.WriteLine("Dags att skapa ny bag, kör hårt!");
-
-                    //static void Nybag()
-                    {
-                        //int distans;
-                        //int antal;
-                        //string[] Klubblista = new string [antal];
-                        //int[] Längd = new int [antal];
-
-                        //string typAvKlubba;
-
-                        Console.WriteLine("Hur många klubbor vill du registrera? ");
-                        int antal = int.Parse(Console.ReadLine());
-                        string[] Klubblista = new string[antal];
-                        int[] Längd = new int[antal];
-                        for (int i = 0; i < antal; i++)
-                        {
-
-                            Console.WriteLine("Vad vill du namnge denna klubban? ");
-                            Klubblista[i] = Console.ReadLine();
-
-                            Console.WriteLine("Hur långt slår du med denna klubban? ");
-                            Längd[i] = int.Parse(Console.ReadLine());
-
-                        }
-                        foreach (var iteam in Klubblista)
-                        {
-                            Console.WriteLine("Listan innehåller nu:", iteam);
-                        }
-                        foreach (var iteam in Längd)
-                        {
-                            Console.WriteLine("Listan innehåller nu:", iteam);
-                        }
-                    }
-
-
+                    Skapabag();
+                    //Läggtillklubbor();
                 }
+
                 else if (användarInput == "3")
                 {
                     Console.WriteLine("Mina bags");
-                    //metod/funktion
+
                 }
                 else if (användarInput == "4")
                 {
@@ -84,36 +55,42 @@ namespace Digital_Caddie
                 }
             }
 
-        public static void LäggTillBag() //Prompta användaren till att skapa en ny bag med klubbor.
-        {
-            Bag ny = new Bag();
-            Console.WriteLine("Döp din bag: ");
-            ny.namn = Console.ReadLine();
-            Console.WriteLine("Hur många klubbor vill du lägga till i bagen?: ");
-                ny.klubbNamn = Console.ReadLine();
-            ny.maxLängd = new int[antalKlubbor];
-            ny.minLängd = new int[antalKlubbor];
-            for (int i = 0; i < antalKlubbor; i++)
+
+            static void Skapabag()
             {
-                Console.WriteLine("#" + (i + 1) + "Namnge ny klubba: \n");
-                ny.klubbNamn[i] = Console.ReadLine();
-
-                
-                Console.WriteLine("#" + (i + 1) + "Ange max längd som du slår med klubban: \n"); //Får felmeddelande när attribut för klubbans max och min längd ska lägga in i arrayn
-                ny.maxLängd[i] = int.Parse(Console.ReadLine());
-                
-                
-                
-                Console.WriteLine("#" + (i + 1) + "Ange minimum längd som du slår med klubban: \n");
-                ny.minLängd[i] = int.Parse(Console.ReadLine());
-                
-
+                Console.WriteLine("Döp din bag: ");
+                string namn = Console.ReadLine();
+                Bag[] bagRegister = new Bag[0];
+                Console.WriteLine("Hur många klubbor vill du lägga till i bagen?: \n");
+                int antalKlubbor = int.Parse(Console.ReadLine());
+                for (int b = 0; b < antalKlubbor; b++)  //while loop för att promta användaren att skapa bag om listan är tom?
+                {
+                    bagRegister[b] = Läggtillklubbor();
+                }
             }
-            bagRegister = UtökaBagRegister(bagRegister, ny); //Lägger till bag sist i bagregister.
-            SkrivUtBaglista(bagRegister);
+
+            //Behöver nedan metod bakas in i ovan metod istället? 
+            static Bag Läggtillklubbor() //Prompta användaren till att skapa en ny bag med klubbor.  
+            {
+                Bag ny = new Bag();
+                Console.WriteLine("Namge denna klubban: \n");
+                ny.klubba[0].klubbNamn = Console.ReadLine();  //fel här när man ska lägga till input till array
+                Console.WriteLine("Ange max längd du slår med denna klubban: \n");
+                ny.klubba[0].maxLängd = int.Parse(Console.ReadLine());
+                Console.WriteLine("Ange minimum längd du slår med denna klubban: \n");
+                ny.klubba[0].minLängd = int.Parse(Console.ReadLine());
+                return ny;
+            }
         }
-        public static Bag[] UtökaBagRegister(Bag[] lista, Bag ny)
+
+
+        public static void UtökaBagRegister(Bag[] lista, Bag ny)
         {
+            Bag[] nyLista = new Bag[lista.Length + 1];
+            for (int i = 0; i < lista.Length; i++)
+                nyLista[i] = lista[i];
+            nyLista[lista.Length] = ny;
+
 
         }
         public static uint ReadUInt(string label)
@@ -128,7 +105,7 @@ namespace Digital_Caddie
             return tal;
         }
 
-        public static void SkrivUtBaglista(Bag[] bagRegister)
+        public static void SkrivUtBaglista()
         {
             Console.WriteLine("Utskrift av bagregister: \n");
             for (int i = 0; i < bagRegister.Length; i++) //loopa igenom bagregistret
@@ -141,11 +118,16 @@ namespace Digital_Caddie
                 {
                     Console.WriteLine("Klubba: " + bagRegister[i].klubbNamn + "denna klubbar går mellan " + bagRegister[i].minLängd + "-" + bagRegister[i].maxLängd + " m");
                 }*/
-                foreach (string klubba in bagRegister[i].klubbNamn)
+                /*foreach (string klubba in bagRegister[i].klubbNamn)
                 {
                     Console.WriteLine(klubba );
-                }
+                }*/
             }
+
         }
     }
 }
+
+    
+    
+
