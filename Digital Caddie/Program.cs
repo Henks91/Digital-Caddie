@@ -9,7 +9,7 @@ namespace Digital_Caddie
         static void Main(string[] args)
         {
             Huvudmeny();
-            SkrivUtBaglista(bagRegister);
+            
 
         }
         static void Huvudmeny()
@@ -84,6 +84,7 @@ namespace Digital_Caddie
 
             }
             bagRegister = UtökaBagRegister(bagRegister, ny); //Lägger till bag sist i bagregister.
+            SkrivUtBaglista(bagRegister);
 
         }
         public static Bag[] UtökaBagRegister(Bag[] lista, Bag ny)
@@ -94,7 +95,7 @@ namespace Digital_Caddie
             nyLista[lista.Length] = ny;
             return nyLista;
 
-        }
+        }//ökar platsen för "BagRegister
         public static uint ReadUInt(string label)
         {
             Console.WriteLine(label);
@@ -106,7 +107,7 @@ namespace Digital_Caddie
             }
 
             return tal;
-        }
+        } // felsökningskod för endast possitiva tal
 
         public static void SkrivUtBaglista(Bag[] bagRegister)
         {
@@ -132,7 +133,7 @@ namespace Digital_Caddie
             }
 
 
-        }
+        } //skriver ut listan "bagRegister" med alla klubbor + klubbornas attribut
 
         public static void SparaRegister()
         {
