@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Digital_Caddie
+﻿namespace Digital_Caddie
 {
     class ClassKlubba
     {
