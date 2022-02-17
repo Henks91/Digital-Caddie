@@ -69,6 +69,9 @@ namespace Digital_Caddie
 
             for (int i = 0; i < antalKlubbor; i++)
             {
+                
+                ny.klubba[i] = new Klubba();
+                
                 //Får felmeddelande när attribut för klubbans namn,max och min längd ska lägga in i arrayn. Den vill inte köpa attributen.
                 Console.WriteLine("#" + (i + 1) + "Namnge ny klubba: \n");
                 ny.klubba[i].klubbNamn = Console.ReadLine();
