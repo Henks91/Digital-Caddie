@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
 
 namespace Digital_Caddie
 {
@@ -79,7 +84,7 @@ namespace Digital_Caddie
 
             }
             bagRegister = UtökaBagRegister(bagRegister, ny); //Lägger till bag sist i bagregister.
-            SkrivUtBaglista();
+            //SkrivUtBaglista();
         }
         public static Bag[] UtökaBagRegister(Bag[] lista, Bag ny)
         {
