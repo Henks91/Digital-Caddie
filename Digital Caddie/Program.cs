@@ -69,11 +69,12 @@ namespace Digital_Caddie
 
             for (int i = 0; i < antalKlubbor; i++)
             {
+                //Får felmeddelande när attribut för klubbans namn,max och min längd ska lägga in i arrayn. Den vill inte köpa attributen.
                 Console.WriteLine("#" + (i + 1) + "Namnge ny klubba: \n");
-                ny.klubba[i].klubbNamn = (Console.ReadLine());
+                ny.klubba[i].klubbNamn = Console.ReadLine();
 
-
-                Console.WriteLine("#" + (i + 1) + "Ange max längd som du slår med klubban: \n"); //Får felmeddelande när attribut för klubbans max och min längd ska lägga in i arrayn
+                
+                Console.WriteLine("#" + (i + 1) + "Ange max längd som du slår med klubban: \n"); 
                 ny.klubba[i].maxLängd = int.Parse(Console.ReadLine());
 
 
@@ -84,7 +85,7 @@ namespace Digital_Caddie
 
             }
             bagRegister = UtökaBagRegister(bagRegister, ny); //Lägger till bag sist i bagregister.
-            //SkrivUtBaglista();
+            
         }
         public static Bag[] UtökaBagRegister(Bag[] lista, Bag ny)
         {
