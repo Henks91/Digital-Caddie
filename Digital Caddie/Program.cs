@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Digital_Caddie
 {
@@ -130,6 +131,12 @@ namespace Digital_Caddie
 
             }
 
+
+        }
+
+        public static void SparaRegister()
+        {
+            StreamWriter utfil = new StreamWriter("Bagregister.txt");
 
         }
 
