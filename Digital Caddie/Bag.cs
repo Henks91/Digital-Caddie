@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace Digital_Caddie
+﻿namespace Digital_Caddie
 {
     class Bag
     {
         public string namn;
-        public Klubba[] klubba;
+        public Klubbor[] klubbor;
 
     }
-    
+
 }

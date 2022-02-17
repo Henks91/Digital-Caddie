@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
 namespace Digital_Caddie
 {
@@ -61,34 +56,34 @@ namespace Digital_Caddie
         public static void LäggTillBag() //Prompta användaren till att skapa en ny bag med klubbor.
         {
             Bag ny = new Bag();
-            ny.klubba = new Klubba[14];
-            
+            ny.klubbor = new Klubbor[14];
+
             Console.WriteLine("Döp din bag: ");
             ny.namn = Console.ReadLine();
             uint antalKlubbor = ReadUInt("Hur många klubbor vill du lägga till i bagen?: ");
 
             for (int i = 0; i < antalKlubbor; i++)
             {
-                
-                ny.klubba[i] = new Klubba();
-                
+
+                ny.klubbor[i] = new Klubbor();
+
                 //Får felmeddelande när attribut för klubbans namn,max och min längd ska lägga in i arrayn. Den vill inte köpa attributen.
                 Console.WriteLine("#" + (i + 1) + "Namnge ny klubba: \n");
-                ny.klubba[i].klubbNamn = Console.ReadLine();
+                ny.klubbor[i].klubbNamn = Console.ReadLine();
 
-                
-                Console.WriteLine("#" + (i + 1) + "Ange max längd som du slår med klubban: \n"); 
-                ny.klubba[i].maxLängd = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("#" + (i + 1) + "Ange max längd som du slår med klubban: \n");
+                ny.klubbor[i].maxLängd = int.Parse(Console.ReadLine());
 
 
 
                 Console.WriteLine("#" + (i + 1) + "Ange minimum längd som du slår med klubban: \n");
-                ny.klubba[i].minLängd = int.Parse(Console.ReadLine());
+                ny.klubbor[i].minLängd = int.Parse(Console.ReadLine());
 
 
             }
             bagRegister = UtökaBagRegister(bagRegister, ny); //Lägger till bag sist i bagregister.
-            
+
         }
         public static Bag[] UtökaBagRegister(Bag[] lista, Bag ny)
         {
@@ -115,35 +110,29 @@ namespace Digital_Caddie
         public static void SkrivUtBaglista(Bag[] bagRegister)
         {
             Console.WriteLine("Utskrift av bagregister: \n");
-            for (int i = 0; i < bagRegister.Length; i++) //loopa igenom bagregistret
+            for (int i = 0; i < bagRegister[i].klubbor.Length; i++) //loopa igenom bagregistret
             {
                 Console.WriteLine(bagRegister.Length);
-                Console.WriteLine("\n#" + i + "Bagnamn: " + bagRegister[i].namn);
-                Console.WriteLine("Klubbor i baggen: " + bagRegister[i].klubba);
+                Console.WriteLine("\n#" + i + "Bagnamn: " + bagRegister[i].namn); // skriver ut namnet på baggen
 
-                /*for (int k = 0; k < bagRegister.Length; k++)
+
+                Console.WriteLine("klubbor i baggen: ");
+                for (int k = 0; k < bagRegister[i].klubbor.Length; k++) // loopa vi igenm "bagregistret med [i] samtidigt som vi inne i denna array looper igenom register "klubba" med [k]
                 {
-                    Console.WriteLine("Klubba: " + bagRegister[i].klubbNamn + "denna klubbar går mellan " + bagRegister[i].minLängd + "-" + bagRegister[i].maxLängd + " m");
-                }*/
-                
-                /*foreach (string klubba in bagRegister[i].klubbNamn)
-                {
-                    
-                    Console.Write(klubba + "\t\t");
+                    if (bagRegister[i].klubbor[k] == null)
+
+                        break;
+                    Console.Write(bagRegister[i].klubbor[k].klubbNamn + "\t slår du mellan ");
+                    Console.Write(bagRegister[i].klubbor[k].minLängd + "-");
+                    Console.Write(bagRegister[i].klubbor[k].maxLängd + " meter\n");
+
                 }
-                Console.Write("\nmin:");
-                foreach (int minLängd in bagRegister[i].minLängd)
-                {
-                    Console.Write(minLängd + "\t\t");
-                }
-                Console.Write("\nmax:{0,3} ");
-                foreach (int maxLängd in bagRegister[i].maxLängd)
-                {
-                    Console.Write(maxLängd + "\t\t");
-                }*/
+
             }
+
+
         }
 
     }
-    
+
 }

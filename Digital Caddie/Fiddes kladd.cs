@@ -7,7 +7,7 @@ namespace Digital_Caddie
         static void Testning()
         {
             Console.WriteLine("Hej Henke ooch Carl");
-            
+
         }
     }
 }
