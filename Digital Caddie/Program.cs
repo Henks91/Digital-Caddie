@@ -142,6 +142,7 @@ namespace Digital_Caddie
             for (int i = 0; i < bagRegister.Length; i++)
             {
                 Bag bag = bagRegister[i];
+
                 utfil.WriteLine("{0}\t", bag.namn, bag.klubbor);
             }
             utfil.Close();
