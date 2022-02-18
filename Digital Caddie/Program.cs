@@ -8,10 +8,13 @@ namespace Digital_Caddie
         static Bag[] bagRegister = new Bag[0];
         static void Main(string[] args)
         {
+            LaddaRegister();
             Huvudmeny();
-            
+
 
         }
+
+       
         static void Huvudmeny()
         {
 
@@ -113,7 +116,7 @@ namespace Digital_Caddie
         public static void SkrivUtBaglista(Bag[] bagRegister)
         {
             Console.WriteLine("Utskrift av bagregister: \n");
-            for (int i = 0; i < bagRegister[i].klubbor.Length; i++) //loopa igenom bagregistret
+            for (int i = 0; i < bagRegister.Length; i++) //loopa igenom bagregistret
             {
                 Console.WriteLine(bagRegister.Length);
                 Console.WriteLine("\n#" + i + "Bagnamn: " + bagRegister[i].namn); // skriver ut namnet på baggen
@@ -135,19 +138,79 @@ namespace Digital_Caddie
 
 
         } //skriver ut listan "bagRegister" med alla klubbor + klubbornas attribut
+        public static void LaddaRegister()
+        {
+            StreamReader infil = new StreamReader("Bagregister.txt");
+            string rad;
+            while ((rad=infil.ReadLine()) !=null)
+            {
+                
+                //Klubbor[] klubbor = new Klubbor[14];
+                //Klubbor klubblista = new Klubbor();
+                string[] fält = rad.Split('$');
+                string namn = fält[0];
+                string klubbNamn = fält[1];
+                int minLängd = int.Parse(fält[2]);
+                int maxLängd = int.Parse(fält[3]);
+                string[] klubbLista = new Klubbor[14];
 
+                Bag bag = new Bag();
+                bag.namn = namn;
+                bag.klubbor = klubbLista;
+                bag.
+
+                for (int i = 0; i < 14; i++)
+                {
+                    klubbLista[i] = fält[i + 4];
+                }
+
+
+              
+                /*for (int i = 0; i < 14; i++)
+                {
+                    klubbor[i] = klubbor[i+1];
+                }
+                bag.klubbor = klubbor;*/
+                
+            }
+        }
         public static void SparaRegister()
         {
-            StreamWriter utfil = new StreamWriter("Bagregister.txt");
+            StreamWriter utfil = new StreamWriter("Bagregister.txt", false);
+            
             for (int i = 0; i < bagRegister.Length; i++)
             {
                 Bag bag = bagRegister[i];
+                utfil.Write("{0}$", bag.namn);
 
-                utfil.WriteLine("{0}\t", bag.namn, bag.klubbor);
+                    for (int k = 0; k < bagRegister[i].klubbor.Length; k++)
+                    {
+                    if (bagRegister[i].klubbor[k] == null)
+
+                        break;
+                    utfil.Write("{0}:{1}-{2}$",
+                        bag.klubbor[k].klubbNamn,
+                        bag.klubbor[k].minLängd,
+                        bag.klubbor[k].maxLängd);
+
+                    }
+                         
             }
             utfil.Close();
+
         }
-
     }
-
 }
+    
+
+
+
+    
+
+
+
+
+
+    
+
+
