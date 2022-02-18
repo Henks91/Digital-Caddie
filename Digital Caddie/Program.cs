@@ -112,7 +112,7 @@ namespace Digital_Caddie
         public static void SkrivUtBaglista(Bag[] bagRegister)
         {
             Console.WriteLine("Utskrift av bagregister: \n");
-            for (int i = 0; i < bagRegister[i].klubbor.Length; i++) //loopa igenom bagregistret
+            for (int i = 0; i < bagRegister.Length; i++) //loopa igenom bagregistret
             {
                 Console.WriteLine(bagRegister.Length);
                 Console.WriteLine("\n#" + i + "Bagnamn: " + bagRegister[i].namn); // skriver ut namnet på baggen
