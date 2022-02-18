@@ -45,6 +45,7 @@ namespace Digital_Caddie
                 else if (användarInput == "4")
                 {
                     Console.WriteLine("Du har nu avslutat programmet, välkommen åter!");
+                    SparaRegister();
                     break;
                 }
                 else
@@ -138,7 +139,12 @@ namespace Digital_Caddie
         public static void SparaRegister()
         {
             StreamWriter utfil = new StreamWriter("Bagregister.txt");
-
+            for (int i = 0; i < bagRegister.Length; i++)
+            {
+                Bag bag = bagRegister[i];
+                utfil.WriteLine("{0}\t", bag.namn, bag.klubbor);
+            }
+            utfil.Close();
         }
 
     }
