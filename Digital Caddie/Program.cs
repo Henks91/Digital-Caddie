@@ -199,6 +199,10 @@ namespace Digital_Caddie
             utfil.Close();
 
         }
+        public static void BubbleSort (Bag[] maxLängd)
+        {
+
+        }
     }
 }
     
