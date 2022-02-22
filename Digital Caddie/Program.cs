@@ -1,16 +1,17 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace Digital_Caddie
 {
     class Program
     {
-        static Bag[] bagRegister = new Bag[0];
+        public static Bag[] bagRegister = new Bag[0];
         static void Main(string[] args)
         {
-            LaddaRegister();
+            //LaddaRegister();
             Huvudmeny();
-
+            
 
         }
 
@@ -115,9 +116,11 @@ namespace Digital_Caddie
 
         public static void SkrivUtBaglista(Bag[] bagRegister)
         {
+            
             Console.WriteLine("Utskrift av bagregister: \n");
             for (int i = 0; i < bagRegister.Length; i++) //loopa igenom bagregistret
             {
+                
                 Console.WriteLine(bagRegister.Length);
                 Console.WriteLine("\n#" + i + "Bagnamn: " + bagRegister[i].namn); // skriver ut namnet på baggen
 
@@ -125,20 +128,25 @@ namespace Digital_Caddie
                 Console.WriteLine("klubbor i baggen: ");
                 for (int k = 0; k < bagRegister[i].klubbor.Length; k++) // loopa vi igenm "bagregistret med [i] samtidigt som vi inne i denna array looper igenom register "klubba" med [k]
                 {
+
+
                     if (bagRegister[i].klubbor[k] == null)
 
                         break;
+                    
                     Console.Write(bagRegister[i].klubbor[k].klubbNamn + "\t slår du mellan ");
                     Console.Write(bagRegister[i].klubbor[k].minLängd + "-");
                     Console.Write(bagRegister[i].klubbor[k].maxLängd + " meter\n");
-
+ 
+                    
                 }
+                
 
             }
 
 
         } //skriver ut listan "bagRegister" med alla klubbor + klubbornas attribut
-        public static void LaddaRegister()
+        /*public static void LaddaRegister()
         {
             StreamReader infil = new StreamReader("Bagregister.txt");
             string rad;
@@ -170,10 +178,10 @@ namespace Digital_Caddie
                 {
                     klubbor[i] = klubbor[i+1];
                 }
-                bag.klubbor = klubbor;*/
+                bag.klubbor = klubbor;
                 
             }
-        }
+        }*/
         public static void SparaRegister()
         {
             StreamWriter utfil = new StreamWriter("Bagregister.txt", false);
@@ -199,10 +207,46 @@ namespace Digital_Caddie
             utfil.Close();
 
         }
-        public static void BubbleSort (Bag[] maxLängd)
+        /*public static void Sort (int[] bagRegister) //Bubblesort metoden (får inte den att funka
         {
+            
+            for (int i = 0; i < bagRegister.Length;  i++){
+                int minst = i;
 
+                for (int j = i + 1; j < bagRegister.Length; j++){
+                    if (bagRegister[minst] > bagRegister[j]){
+                        minst = j;
+                    }
+
+                    if (bagRegister[j] > bagRegister[j + 1])
+                    {
+                        temp = bagRegister[j + 1];
+                        bagRegister[j + 1] = bagRegister[j];
+                        bagRegister[j] = temp;
+                    }
+                }
+            }
+        }*/
+        public static void Sort (int[] bagRegister) // funktionen "Swap" kan ej hittas?
+        {
+            for (int i = 0; i < bagRegister.Length; i++)
+            {
+                int minst = i;
+                for (int j = i + 1; j < bagRegister.Length; j++)
+                {
+                    if (bagRegister[minst] > bagRegister[j])
+                    {
+                        minst = j;
+                    }
+                }
+                if (i < minst)
+                {
+                    //Swap(bagRegister, minst, i);
+                    Sort(bagRegister);
+                }
+            }
         }
+
     }
 }
     
