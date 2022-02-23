@@ -11,11 +11,11 @@ namespace Digital_Caddie
         {
             //LaddaRegister();
             Huvudmeny();
-            
+
 
         }
 
-       
+
         static void Huvudmeny()
         {
 
@@ -116,11 +116,11 @@ namespace Digital_Caddie
 
         public static void SkrivUtBaglista(Bag[] bagRegister)
         {
-            
+
             Console.WriteLine("Utskrift av bagregister: \n");
             for (int i = 0; i < bagRegister.Length; i++) //loopa igenom bagregistret
             {
-                
+
                 Console.WriteLine(bagRegister.Length);
                 Console.WriteLine("\n#" + i + "Bagnamn: " + bagRegister[i].namn); // skriver ut namnet på baggen
 
@@ -130,17 +130,17 @@ namespace Digital_Caddie
                 {
 
 
-                    if (bagRegister[i].klubbor[k] == null)
+                    if (bagRegister[i].klubbor[k] == null) //Då vektorn är satt på max 14 platsen måste vi stoppa loopen när vi får null-värde, if-metoden hjälper oss med detta.   
 
                         break;
-                    
+
                     Console.Write(bagRegister[i].klubbor[k].klubbNamn + "\t slår du mellan ");
                     Console.Write(bagRegister[i].klubbor[k].minLängd + "-");
                     Console.Write(bagRegister[i].klubbor[k].maxLängd + " meter\n");
- 
-                    
+
+
                 }
-                
+
 
             }
 
@@ -185,14 +185,14 @@ namespace Digital_Caddie
         public static void SparaRegister()
         {
             StreamWriter utfil = new StreamWriter("Bagregister.txt", false);
-            
+
             for (int i = 0; i < bagRegister.Length; i++)
             {
                 Bag bag = bagRegister[i];
                 utfil.Write("{0}$", bag.namn);
 
-                    for (int k = 0; k < bagRegister[i].klubbor.Length; k++)
-                    {
+                for (int k = 0; k < bagRegister[i].klubbor.Length; k++)
+                {
                     if (bagRegister[i].klubbor[k] == null)
 
                         break;
@@ -201,8 +201,8 @@ namespace Digital_Caddie
                         bag.klubbor[k].minLängd,
                         bag.klubbor[k].maxLängd);
 
-                    }
-                         
+                }
+
             }
             utfil.Close();
 
@@ -227,7 +227,7 @@ namespace Digital_Caddie
                 }
             }
         }*/
-        public static void Sort (int[] bagRegister) // funktionen "Swap" kan ej hittas?
+        public static void Sort(Bag[] bagRegister) // funktionen "Swap" kan ej hittas?
         {
             for (int i = 0; i < bagRegister.Length; i++)
             {
@@ -241,7 +241,7 @@ namespace Digital_Caddie
                 }
                 if (i < minst)
                 {
-                    //Swap(bagRegister, minst, i);
+                    Swap(bagRegister, minst, i);
                     Sort(bagRegister);
                 }
             }
