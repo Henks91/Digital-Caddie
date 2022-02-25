@@ -174,7 +174,7 @@ namespace Digital_Caddie
 
 
               
-                /*for (int i = 0; i < 14; i++)
+                for (int i = 0; i < 14; i++)
                 {
                     klubbor[i] = klubbor[i+1];
                 }
@@ -189,14 +189,14 @@ namespace Digital_Caddie
             for (int i = 0; i < bagRegister.Length; i++)
             {
                 Bag bag = bagRegister[i];
-                utfil.Write("{0}$", bag.namn);
+                utfil.Write("${0}$", bag.namn);
 
                 for (int k = 0; k < bagRegister[i].klubbor.Length; k++)
                 {
                     if (bagRegister[i].klubbor[k] == null)
 
                         break;
-                    utfil.Write("{0}:{1}-{2}$",
+                    utfil.Write("#{0}-{1}-{2}#",
                         bag.klubbor[k].klubbNamn,
                         bag.klubbor[k].minLängd,
                         bag.klubbor[k].maxLängd);
@@ -227,7 +227,7 @@ namespace Digital_Caddie
                 }
             }
         }*/
-        public static void Sort(Bag[] bagRegister) // funktionen "Swap" kan ej hittas?
+        /*public static void Sort(Bag[] bagRegister) // funktionen "Swap" kan ej hittas?
         {
             for (int i = 0; i < bagRegister.Length; i++)
             {
@@ -245,7 +245,7 @@ namespace Digital_Caddie
                     Sort(bagRegister);
                 }
             }
-        }
+        }*/
 
     }
 }
