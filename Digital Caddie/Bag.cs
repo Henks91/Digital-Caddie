@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Digital_Caddie
+﻿namespace Digital_Caddie
 {
     class Bag
     {
-        public string namnBag;
-        public Klubba[] klubblist;
+        public string namn;
+        public Klubbor[] klubbor;
 
     }
+
 }
