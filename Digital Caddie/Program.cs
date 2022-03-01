@@ -45,6 +45,7 @@ namespace Digital_Caddie
                 else if (användarInput == "3")
                 {
                     Console.WriteLine("Mina bags");
+                    Sort(bagRegister);
                     SkrivUtBaglista(bagRegister);
 
                 }
@@ -147,7 +148,7 @@ namespace Digital_Caddie
                 bagRegister = UtökaBagRegister(bagRegister, klubba);
             }
             infil.Close();
-        }
+        } // Ladda ner TXT-filen 
         public static void SparaRegister()
         {
             StreamWriter utfil = new StreamWriter("Bagregister.txt", false);
@@ -163,7 +164,7 @@ namespace Digital_Caddie
             }
             utfil.Close();
 
-        }
+        } // Spara till TXT-filen
         /*public static void Sort (int[] bagRegister) //Bubblesort metoden (får inte den att funka
         {
             
@@ -184,25 +185,31 @@ namespace Digital_Caddie
                 }
             }
         }*/
-        /*public static void Sort(Bag[] bagRegister) // funktionen "Swap" kan ej hittas?
+        public static void Swap(Bag[] bagRegister, int a, int b)
+        {
+            Bag tfl = bagRegister[a];
+            bagRegister[a] = bagRegister[b];
+            bagRegister[b] = tfl;
+        }
+        public static void Sort(Bag[] bagRegister) //sorteringsmetod = exchange sort
         {
             for (int i = 0; i < bagRegister.Length; i++)
             {
-                int minst = i;
-                for (int j = i + 1; j < bagRegister.Length; j++)
+                int lägst = i;
+                for (int k = i + 1; k < bagRegister.Length; k++)
                 {
-                    if (bagRegister[minst] > bagRegister[j])
+                    if (bagRegister[lägst].bagNamn.CompareTo(bagRegister[k].bagNamn) > 0)
                     {
-                        minst = j;
+                        lägst = k;
                     }
                 }
-                if (i < minst)
+                if (i < lägst)
                 {
-                    Swap(bagRegister, minst, i);
-                    Sort(bagRegister);
+                    Swap(bagRegister, lägst, i);
+                    
                 }
             }
-        }*/
+        }
 
     }
 }
