@@ -26,7 +26,7 @@ namespace Digital_Caddie
                 Console.WriteLine("1. Spela Golf");
                 Console.WriteLine("2. Skapa ny bag");
                 Console.WriteLine("3. Mina bags");
-                Console.WriteLine("4. Avsluta programmet");
+                Console.WriteLine("0. Avsluta programmet");
 
                 string användarInput = Console.ReadLine();
 
@@ -45,11 +45,20 @@ namespace Digital_Caddie
                 else if (användarInput == "3")
                 {
                     Console.WriteLine("Mina bags");
+                    /*
+                     * Skapa ny menyval för 
+                     * 1.sortera
+                     * 2.lista
+                     * 3.Lägg till klubba
+                     * 4.Ta bort klubba
+                     * 5.Sök på längd
+                     * 6.Sök på bagnamn
+                    */
                     Sort(bagRegister);
                     SkrivUtBaglista(bagRegister);
 
                 }
-                else if (användarInput == "4")
+                else if (användarInput == "0")
                 {
                     Console.WriteLine("Du har nu avslutat programmet, välkommen åter!");
                     SparaRegister();
