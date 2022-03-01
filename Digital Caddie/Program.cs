@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace Digital_Caddie
 {
@@ -9,7 +10,7 @@ namespace Digital_Caddie
         public static Bag[] bagRegister = new Bag[0];
         static void Main(string[] args)
         {
-            //LaddaRegister();
+            LaddaRegister();
             Huvudmeny();
 
 
@@ -44,6 +45,7 @@ namespace Digital_Caddie
                 else if (användarInput == "3")
                 {
                     Console.WriteLine("Mina bags");
+                    SkrivUtBaglista(bagRegister);
 
                 }
                 else if (användarInput == "4")
@@ -61,26 +63,29 @@ namespace Digital_Caddie
 
         public static void LäggTillBag() //Prompta användaren till att skapa en ny bag med klubbor.
         {
-            Bag ny = new Bag();
-
+            
             
             Console.WriteLine("Döp din bag: ");
-            ny.namn = Console.ReadLine();
+            string bagnamn = Console.ReadLine();
+
             uint antalKlubbor = ReadUInt("Hur många klubbor vill du lägga till i bagen?: ");
-            
+
+
             for (int i = 0; i < antalKlubbor; i++)
             {
-
+                Bag klubba = new Bag();
                 Console.WriteLine("Namnge ny klubba: \n");
-                ny.namnKlubba = Console.ReadLine();
+                klubba.namnKlubba = Console.ReadLine();
+                
+                klubba.maxLenght = ReadUInt("Ange maxlängd som du slår med klubban: ");
 
-                ny.maxLenght = ReadUInt("Ange maxlängd som du slår med klubban: ");
+                klubba.minLenght = ReadUInt("Ange minlängd som du slår med klubban: ");
 
-                ny.minLenght = ReadUInt("Ange minlängd som du slår med klubban: ");
+                klubba.bagNamn = bagnamn;
 
-                bagRegister = UtökaBagRegister(bagRegister, ny);
+                bagRegister = UtökaBagRegister(bagRegister, klubba);
             }
-            //bagRegister = UtökaBagRegister(bagRegister, ny); //Lägger till bag sist i bagregister.
+            //bagRegister = UtökaBagRegister(bagRegister, ba); //Lägger till bag sist i bagregister.
             SkrivUtBaglista(bagRegister);
 
         }
@@ -108,45 +113,38 @@ namespace Digital_Caddie
 
         public static void SkrivUtBaglista(Bag[] bagRegister)
         {
-
-            Console.WriteLine("Utskrift av bagregister: \n");
-            for (int i = 0; i < bagRegister.Length; i++) //loopa igenom bagregistret
+            Console.WriteLine("Bag\tKlubba\tminL\tmaxL");
+            for (int i = 0; i < bagRegister.Length; i++)
             {
-
-                Console.WriteLine("\n#" + i + "Bagnamn: " + bagRegister[i].namn); // skriver ut namnet på baggen
-
-                Console.WriteLine("klubbor i baggen: ");
-                for (int k = 0; k < bagRegister.Length; k++) // loopa vi igenm "bagregistret med [i] samtidigt som vi inne i denna array looper igenom register "klubba" med [k]
-                {
-                    Console.Write(bagRegister[i].namnKlubba + "\t slår du mellan ");
-                    Console.Write(bagRegister[i].minLenght + "-");
-                    Console.Write(bagRegister[i].maxLenght + " meter\n");
-                }
-
+                SkrivUtBag(bagRegister[i]);
             }
 
-
-
-        } //skriver ut listan "bagRegister" med alla klubbor + klubbornas attribut
+        }
+        public static void SkrivUtBag(Bag klubba) 
+        {
+            Console.WriteLine(klubba.bagNamn + "\t" + klubba.namnKlubba + "\t" + klubba.minLenght + "\t" + klubba.maxLenght);
+        }
+        
+        //skriver ut listan "bagRegister" med alla klubbor + klubbornas attribut
         public static void LaddaRegister()
         {
             StreamReader infil = new StreamReader("Bagregister.txt");
-            
-            while (true)
+            string rad;
+            while ((rad = infil.ReadLine()) !=null)
             {
-                string line = infil.ReadLine();
-                if (line == null) 
-                break;
+                //string line = infil.ReadLine();
+                //if (line == null) //förhindrar att programmet läser tomma rader i all oändlighet.
+                //break;
+                
+                string[] split = rad.Split('\t'); //Felet är att när vi laddar infil och splittar så laddas hela listan på en o samam gång, ska bara ladda fyra attribut åt gången från klass Bag
 
-                string[] split = line.Split('\t');
+                Bag klubba = new Bag();
+                klubba.bagNamn = split[0];
+                klubba.namnKlubba = split[1];
+                klubba.minLenght = uint.Parse(split[2]); 
+                klubba.maxLenght = uint.Parse(split[3]);
 
-                Bag bag = new Bag();
-                bag.namn = split[0];
-                bag.namnKlubba = split[1];
-                bag.minLenght = uint.Parse(split[2]); // OBS!
-                bag.maxLenght = uint.Parse(split[3]);
-
-                bagRegister = UtökaBagRegister(bagRegister, bag);
+                bagRegister = UtökaBagRegister(bagRegister, klubba);
             }
             infil.Close();
         }
@@ -157,11 +155,11 @@ namespace Digital_Caddie
             for (int i = 0; i < bagRegister.Length; i++)
             {
                 Bag bag = bagRegister[i];
-                utfil.Write("{0}\t{1}\t{2}\t{3}",
-                bag.namn,
+                utfil.Write("{0}\t{1}\t{2}\t{3}\n",
+                bag.bagNamn,
                 bag.namnKlubba, 
                 bag.minLenght,
-                bag.minLenght);
+                bag.maxLenght);
             }
             utfil.Close();
 

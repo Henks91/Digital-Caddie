@@ -1,8 +1,8 @@
 ﻿namespace Digital_Caddie
 {
-    class Bag
+    public class Bag
     {
-        public string namn;
+        public string bagNamn;
         public string namnKlubba;
         public uint minLenght;
         public uint maxLenght;
