@@ -72,11 +72,11 @@ namespace Digital_Caddie
             {
 
                 Console.WriteLine("Namnge ny klubba: \n");
-                ny.namnKlubba[i] = Console.ReadLine();
+                ny.namnKlubba = Console.ReadLine();
 
-                ny.maxLenght[i] = ReadUInt("Ange maxlängd som du slår med klubban: ");
+                ny.maxLenght = ReadUInt("Ange maxlängd som du slår med klubban: ");
 
-                ny.minLenght[i] = ReadUInt("Ange minlängd som du slår med klubban: ");
+                ny.minLenght = ReadUInt("Ange minlängd som du slår med klubban: ");
 
                 bagRegister = UtökaBagRegister(bagRegister, ny);
             }
