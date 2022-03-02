@@ -25,7 +25,11 @@ namespace Digital_Caddie
                 Console.WriteLine("\nVälkommen till Huvudmenyn, väl ett av nedan alternativ! \n Kom ihåg att skapa din bag innan du kan börja spela:)");
                 Console.WriteLine("1. Spela Golf");
                 Console.WriteLine("2. Skapa ny bag");
-                Console.WriteLine("3. Mina bags");
+                Console.WriteLine("3. Lista alla bags");
+                Console.WriteLine("4. Sortera bagregister enligt bagnamn");
+                Console.WriteLine("5. Sortera bagregister enligt klubbnamn");
+                Console.WriteLine("6. Sortera bagregister enligt min längd");
+                Console.WriteLine("7. Sortera bagregister enligt max längd");
                 Console.WriteLine("0. Avsluta programmet");
 
                 string användarInput = Console.ReadLine();
@@ -44,19 +48,38 @@ namespace Digital_Caddie
                 }
                 else if (användarInput == "3")
                 {
-                    Console.WriteLine("Mina bags");
+                    Console.WriteLine("Lista bags");
+                    SkrivUtBaglista(bagRegister);
+
                     /*
                      * Skapa ny menyval för 
-                     * 1.sortera
-                     * 2.lista
                      * 3.Lägg till klubba
                      * 4.Ta bort klubba
                      * 5.Sök på längd
                      * 6.Sök på bagnamn
                     */
-                    Sort(bagRegister);
-                    SkrivUtBaglista(bagRegister);
-
+                    
+                    
+                }
+                else if (användarInput == "4")
+                {
+                    Console.WriteLine("Sorterar bagregister enligt bagnamn");
+                    SortBagNamn(bagRegister);
+                }
+                else if (användarInput == "5")
+                {
+                    Console.WriteLine("Sorterar bagregister enligt klubbnamn");
+                    SortKlubbNamn(bagRegister);
+                }
+                else if (användarInput == "6")
+                {
+                    Console.WriteLine("Sorterar bagregister enligt MIN längd");
+                    SortMinLängd(bagRegister);
+                }
+                else if (användarInput == "7")
+                {
+                    Console.WriteLine("Sorterar bagregister enligt MAX längd");
+                    SortMaxLängd(bagRegister);
                 }
                 else if (användarInput == "0")
                 {
@@ -66,7 +89,7 @@ namespace Digital_Caddie
                 }
                 else
                 {
-                    Console.WriteLine("Ogiltligt val, välj mellan 1-4!");
+                    Console.WriteLine("Ogiltligt val, välj mellan 0-7!");
                 }
             }
         }
@@ -200,7 +223,7 @@ namespace Digital_Caddie
             bagRegister[a] = bagRegister[b];
             bagRegister[b] = tfl;
         }
-        public static void Sort(Bag[] bagRegister) //sorteringsmetod = exchange sort
+        public static void SortBagNamn(Bag[] bagRegister) //sorteringsmetod = exchange sort
         {
             for (int i = 0; i < bagRegister.Length; i++)
             {
@@ -218,6 +241,67 @@ namespace Digital_Caddie
                     
                 }
             }
+            SkrivUtBaglista(bagRegister);
+        }
+        public static void SortKlubbNamn(Bag[] bagRegister) //sorteringsmetod = exchange sort
+        {
+            for (int i = 0; i < bagRegister.Length; i++)
+            {
+                int lägst = i;
+                for (int k = i + 1; k < bagRegister.Length; k++)
+                {
+                    if (bagRegister[lägst].namnKlubba.CompareTo(bagRegister[k].namnKlubba) > 0)
+                    {
+                        lägst = k;
+                    }
+                }
+                if (i < lägst)
+                {
+                    Swap(bagRegister, lägst, i);
+
+                }
+            }
+            SkrivUtBaglista(bagRegister);
+        }
+        public static void SortMinLängd(Bag[] bagRegister) //sorteringsmetod = exchange sort
+        {
+            for (int i = 0; i < bagRegister.Length; i++)
+            {
+                int lägst = i;
+                for (int k = i + 1; k < bagRegister.Length; k++)
+                {
+                    if (bagRegister[lägst].minLenght.CompareTo(bagRegister[k].minLenght) > 0)
+                    {
+                        lägst = k;
+                    }
+                }
+                if (i < lägst)
+                {
+                    Swap(bagRegister, lägst, i);
+
+                }
+            }
+            SkrivUtBaglista(bagRegister);
+        }
+        public static void SortMaxLängd(Bag[] bagRegister) //sorteringsmetod = exchange sort
+        {
+            for (int i = 0; i < bagRegister.Length; i++)
+            {
+                int lägst = i;
+                for (int k = i + 1; k < bagRegister.Length; k++)
+                {
+                    if (bagRegister[lägst].maxLenght.CompareTo(bagRegister[k].maxLenght) > 0)
+                    {
+                        lägst = k;
+                    }
+                }
+                if (i < lägst)
+                {
+                    Swap(bagRegister, lägst, i);
+
+                }
+            }
+            SkrivUtBaglista(bagRegister);
         }
 
     }
