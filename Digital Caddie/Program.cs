@@ -339,8 +339,14 @@ namespace Digital_Caddie
         public static void SökBag()
         {
             Console.WriteLine("Sök på bag: ");
+            string sökord, resultat;
+            sökord = Console.ReadLine();
 
-            string sökord = Console.ReadLine();
+            resultat = HämtaBag(Bag bagRegister, sökord);
+
+
+
+
             Bag[] bagträffar = HämtaBag(sökord);
             SkrivUtBaglista(bagträffar);
             /*
@@ -348,38 +354,39 @@ namespace Digital_Caddie
             */
       
         }
-        public static Bag[] SökningBag(string sökord)
+        /// <summary>
+        /// Den här funktion söker fram en bag som användaren promtar
+        /// Lägg till 
+        /// </summary>
+        /// <param name="sökord"></param>
+        /// <returns></returns>
+        public static Bag SökningBag(string sökord)
         {
-            Bag[] hittadeBags = new Bag[bagRegister.Length];
-            int antalBags = 0;
+            
             for (int i = 0; i < bagRegister.Length; i++)
             {
                 
                 if (bagRegister[i].bagNamn.ToLower().Contains(sökord.ToLower()))
                 {
-                    hittadeBags[antalBags++] = bagRegister[i];
+                    return bagRegister[i];
                 }
             }
-
-            Bag[] hittadeBagsSkalad = new Bag[antalBags];
-            for (int i = 0; i < antalBags; i++)
-            {
-                hittadeBagsSkalad[i] = hittadeBags[i];
-            }
-            return hittadeBagsSkalad;
+            return null;
         }
         public static Bag[] HämtaBag(string bagNamn)
         {
             
             Bag[] bagträffar = new Bag[0];
+
             for (int i = 0; i < bagRegister.Length; i++)
             {
-                if (bagRegister[i].bagNamn.Equals(bagNamn))
+                if (bagRegister[i].bagNamn.ToLower().Contains(bagNamn.ToLower()))
                 {
                     bagträffar = UtökaBagRegister(bagträffar, bagRegister[i]);
-                }
+                    return bagträffar;
+                }               
             }
-            return bagträffar;
+            return null;
         }
         public static void LäggTillKlubba()
         {
@@ -405,14 +412,14 @@ namespace Digital_Caddie
             }
 
         }
-        public static void TaBortBag(Bag[] a)
+        public static void TaBortBag(Bag a)
         {
             for (int i = 0; i < bagRegister.Length; i++)
             {
                 
-                if (bagRegister[i] == a[i])
+                if (bagRegister[i] == a)
                 {
-                    MinskaBagRegister(i); //måste förvandla variabeln till en array
+                    MinskaBagRegister(i);
                     return;
                 }
             }
@@ -421,7 +428,7 @@ namespace Digital_Caddie
         {
             Console.WriteLine("Ange baggen du vill radera");
             string bag = Console.ReadLine();
-            Bag[] a = SökningBag(bag);
+            Bag a = SökningBag(bag);
                         
             if (a == null)
             {
@@ -430,15 +437,15 @@ namespace Digital_Caddie
             }
             TaBortBag(a);
         }
-        public static void MinskaBagRegister(int[] temp)
+        public static void MinskaBagRegister(int temp)
         {
             Bag[] tfl = new Bag[bagRegister.Length - 1];
 
-            for (int i = 0; i < temp.Length; i++)
+            for (int i = 0; i < temp; i++)
             {
                 tfl[i] = bagRegister[i];
             }
-            for (int i = temp.Length + 1; i < bagRegister.Length; i++)
+            for (int i = temp + 1; i < bagRegister.Length; i++)
             {
                 tfl[i - 1] = bagRegister[i];
             }
