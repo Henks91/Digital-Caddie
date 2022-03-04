@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 
 namespace Digital_Caddie
 {
@@ -44,6 +43,9 @@ namespace Digital_Caddie
                 else if (användarInput == "3")
                 {
                     Console.WriteLine("Mina bags");
+                    SkrivUtBaglista(bagRegister);
+                    Sort(bagRegister);
+                    SkrivUtBaglista(bagRegister);
 
                 }
                 else if (användarInput == "4")
@@ -129,7 +131,6 @@ namespace Digital_Caddie
                 for (int k = 0; k < bagRegister[i].klubbor.Length; k++) // loopa vi igenm "bagregistret med [i] samtidigt som vi inne i denna array looper igenom register "klubba" med [k]
                 {
 
-
                     if (bagRegister[i].klubbor[k] == null) //Då vektorn är satt på max 14 platsen måste vi stoppa loopen när vi får null-värde, if-metoden hjälper oss med detta.   
 
                         break;
@@ -138,9 +139,7 @@ namespace Digital_Caddie
                     Console.Write(bagRegister[i].klubbor[k].minLängd + "-");
                     Console.Write(bagRegister[i].klubbor[k].maxLängd + " meter\n");
 
-
                 }
-
 
             }
 
@@ -161,25 +160,18 @@ namespace Digital_Caddie
                 int minLängd = int.Parse(fält[2]);
                 int maxLängd = int.Parse(fält[3]);
                 string[] klubbLista = new Klubbor[14];
-
+                int i = 0;
                 Bag bag = new Bag();
                 bag.namn = namn;
-                bag.klubbor = klubbLista;
-                bag.
+                bag.klubbor[i] = klubbLista;
+                bag.klubbor[i].minLängd = minLängd;
+                bag.klubbor[i].maxLängd = maxLängd;
 
                 for (int i = 0; i < 14; i++)
                 {
                     klubbLista[i] = fält[i + 4];
                 }
 
-
-              
-                for (int i = 0; i < 14; i++)
-                {
-                    klubbor[i] = klubbor[i+1];
-                }
-                bag.klubbor = klubbor;
-                
             }
         }*/
         public static void SparaRegister()
@@ -207,34 +199,20 @@ namespace Digital_Caddie
             utfil.Close();
 
         }
-        /*public static void Sort (int[] bagRegister) //Bubblesort metoden (får inte den att funka
+        public static void Swap(Bag[] bagRegister, int a, int b)
         {
-            
-            for (int i = 0; i < bagRegister.Length;  i++){
-                int minst = i;
-
-                for (int j = i + 1; j < bagRegister.Length; j++){
-                    if (bagRegister[minst] > bagRegister[j]){
-                        minst = j;
-                    }
-
-                    if (bagRegister[j] > bagRegister[j + 1])
-                    {
-                        temp = bagRegister[j + 1];
-                        bagRegister[j + 1] = bagRegister[j];
-                        bagRegister[j] = temp;
-                    }
-                }
-            }
-        }*/
-        /*public static void Sort(Bag[] bagRegister) // funktionen "Swap" kan ej hittas?
+            Bag tfl = bagRegister[a];
+            bagRegister[a] = bagRegister[b];
+            bagRegister[b] = tfl;
+        }
+        public static void Sort(Bag[] bagRegister)
         {
             for (int i = 0; i < bagRegister.Length; i++)
             {
                 int minst = i;
                 for (int j = i + 1; j < bagRegister.Length; j++)
                 {
-                    if (bagRegister[minst] > bagRegister[j])
+                    if (bagRegister[minst].namn.CompareTo(bagRegister[j].namn) > 0)
                     {
                         minst = j;
                     }
@@ -242,23 +220,23 @@ namespace Digital_Caddie
                 if (i < minst)
                 {
                     Swap(bagRegister, minst, i);
-                    Sort(bagRegister);
+                    
                 }
             }
-        }*/
+        }
 
     }
 }
-    
-
-
-
-    
 
 
 
 
 
-    
+
+
+
+
+
+
 
 
