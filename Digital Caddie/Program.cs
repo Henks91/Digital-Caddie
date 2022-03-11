@@ -61,7 +61,7 @@ namespace Digital_Caddie
             }
         }
 
-        public static void LäggTillBag() //Prompta användaren till att skapa en ny bag med klubbor.
+        public static void LäggTillBag() //Prompta användaren till att skapa en ny bag med X antal klubbor, dock max 14 st klubbor.
         {
             Bag ny = new Bag();
             ny.klubbor = new Klubbor[14];
@@ -70,12 +70,13 @@ namespace Digital_Caddie
             ny.namn = Console.ReadLine();
             uint antalKlubbor = ReadUInt("Hur många klubbor vill du lägga till i bagen?: ");
 
+            
             for (int i = 0; i < antalKlubbor; i++)
             {
 
                 ny.klubbor[i] = new Klubbor();
 
-                //Får felmeddelande när attribut för klubbans namn,max och min längd ska lägga in i arrayn. Den vill inte köpa attributen.
+                
                 Console.WriteLine("#" + (i + 1) + "Namnge ny klubba: \n");
                 ny.klubbor[i].klubbNamn = Console.ReadLine();
 
@@ -144,7 +145,7 @@ namespace Digital_Caddie
             }
 
 
-        } //skriver ut listan "bagRegister" med alla klubbor + klubbornas attribut
+        } //skriver ut listan "bagRegister" med alla klubbor + klubbornas attribut. ***Här hade vi problem att läsa in objektet "Klubbor" som var ett attibut i klass "Bag"
         /*public static void LaddaRegister()
         {
             StreamReader infil = new StreamReader("Bagregister.txt");
@@ -178,14 +179,14 @@ namespace Digital_Caddie
         {
             StreamWriter utfil = new StreamWriter("Bagregister.txt", false);
 
-            for (int i = 0; i < bagRegister.Length; i++)
+            for (int i = 0; i < bagRegister.Length; i++) //Loopa igenom attributet "namn" i klassen "BAG" 
             {
                 Bag bag = bagRegister[i];
                 utfil.Write("${0}$", bag.namn);
 
-                for (int k = 0; k < bagRegister[i].klubbor.Length; k++)
+                for (int k = 0; k < bagRegister[i].klubbor.Length; k++) // Loopa igenom attributet av objekt "klubbor" som tillhör klassen "Bag"
                 {
-                    if (bagRegister[i].klubbor[k] == null)
+                    if (bagRegister[i].klubbor[k] == null) // EFtersom listan innerhåller max 14 platsen breaka vi när värdet är null
 
                         break;
                     utfil.Write("#{0}-{1}-{2}#",
