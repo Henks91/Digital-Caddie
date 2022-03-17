@@ -453,8 +453,8 @@ namespace Digital_Caddie
         public static void RaderaBag()
         {
             Console.WriteLine("Ange baggen du vill radera");
-            string bag = Console.ReadLine();
-            Bag a = SökningBag(bag);
+            string sökord = Console.ReadLine();
+            Bag a = SökningBag(sökord);
 
             if (a == null)
             {
