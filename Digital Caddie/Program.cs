@@ -43,7 +43,7 @@ namespace Digital_Caddie
                 else if (användarInput == "3")
                 {
                     Console.WriteLine("Mina bags");
-                    SkrivUtBaglista(bagRegister);
+                    //SkrivUtBaglista(bagRegister);
                     Sort(bagRegister);
                     SkrivUtBaglista(bagRegister);
 
@@ -61,7 +61,7 @@ namespace Digital_Caddie
             }
         }
 
-        public static void LäggTillBag() //Prompta användaren till att skapa en ny bag med X antal klubbor, dock max 14 st klubbor.
+        public static void LäggTillBag() //Prompta användaren till att skapa en ny bag med X antal klubbor,  max 14 st klubbor.
         {
             Bag ny = new Bag();
             ny.klubbor = new Klubbor[14];
