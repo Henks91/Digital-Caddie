@@ -7,9 +7,6 @@
         public uint minLenght;
         public uint maxLenght;
 
-
-        //public Klubbor[] klubbor;
-
     }
 
 }
