@@ -155,16 +155,16 @@ namespace Digital_Caddie
         /// <summary>
         /// Här felsöks input från användaren när siffror ska matas in och skickar ett felmeddelande om input inte är ett possitivt tal.
         /// </summary>
-        /// <param name="possitivtTal"></param>
+        /// <param name="titel"></param>
         /// <returns></returns>
-        public static uint FelsökningFörEndastPossitivaTal(string possitivtTal)
+        public static uint FelsökningFörEndastPossitivaTal(string titel)
         {
-            Console.WriteLine(possitivtTal);
+            Console.WriteLine(titel);
             uint tal;
             while (!uint.TryParse(Console.ReadLine(), out tal))
             {
                 Console.WriteLine("Måste vara ett possitivt tal! ");
-                Console.WriteLine(possitivtTal);
+                Console.WriteLine(titel);
             }
 
             return tal;
