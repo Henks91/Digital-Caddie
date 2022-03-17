@@ -223,7 +223,7 @@ namespace Digital_Caddie
             for (int i = 0; i < bagRegister.Length; i++)
             {
                 Bag bag = bagRegister[i];
-                utfil.Write("{0}\t{1}\t{2}\t{3}\n",
+                utfil.WriteLine("{0}\t{1}\t{2}\t{3}",
                 bag.bagNamn,
                 bag.namnKlubba,
                 bag.minLenght,
@@ -409,13 +409,39 @@ namespace Digital_Caddie
         /// <param name="a"></param>
         public static void TaBortBag(Bag a)
         {
+            
             for (int i = 0; i < bagRegister.Length; i++)
             {
-
+                
+                
                 if (bagRegister[i] == a)
-                {
-                    MinskaBagRegister(i);
-                    return;
+                {                                       
+                    
+                    bool fortsätt = true;
+                    while (fortsätt)
+                    {
+                        Console.WriteLine("vill du ta bort följande bag? {0}\nJA/NEJ:", bagRegister[i].bagNamn);
+                        string svar = Console.ReadLine().ToLower();
+                        if (svar == "ja")
+                        {
+
+                            MinskaBagRegister(i);
+                            Console.WriteLine("{0} är nu borttagen", bagRegister[i].bagNamn);
+                            break;
+                        }
+                        else if (svar == "nej")
+                        {
+                            fortsätt = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Skriv JA eller Nej tack!: ");
+                            fortsätt = true; 
+                        }
+                    }
+                    
+                    
+                    
                 }
             }
         }
