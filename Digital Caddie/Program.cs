@@ -405,6 +405,7 @@ namespace Digital_Caddie
         }
         /// <summary>
         /// Input från "RaderaBag" söker igenom bagRegister array och om träff så påkallas metod "MinskaBagRegister"
+        /// Fråga även användaren om de är säkra på att baggen ska raderas
         /// </summary>
         /// <param name="a"></param>
         public static void TaBortBag(Bag a)
